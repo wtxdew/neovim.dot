@@ -3,37 +3,33 @@
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
 
---local conf = require("configs")
-
 return require('packer').startup(function()
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
   use 'EdenEast/nightfox.nvim'
   use 'github/copilot.vim'
-  use {
-    'hrsh7th/nvim-cmp',  
-    --config = conf.cmp,
-    event = "InsertEnter",
-  }
+  -- use { "lukas-reineke/cmp-under-comparator" }
+	-- use { "saadparwaiz1/cmp_luasnip", after = "LuaSnip" }
+	-- use { "hrsh7th/cmp-nvim-lsp", after = "cmp_luasnip" }
+	-- use { "hrsh7th/cmp-nvim-lua", after = "cmp-nvim-lsp" }
+	-- use { "andersevenrud/cmp-tmux", after = "cmp-nvim-lua" }
+	-- use { "hrsh7th/cmp-path", after = "cmp-tmux" }
+	-- use { "f3fora/cmp-spell", after = "cmp-path" }
+	-- use { "hrsh7th/cmp-buffer", after = "cmp-spell" }
+	-- use { "kdheepak/cmp-latex-symbols", after = "cmp-buffer" }
   use 'rafamadriz/friendly-snippets'
   use 'L3MON4D3/LuaSnip'
   use {
-    "lukas-reineke/indent-blankline.nvim",
+    'lukas-reineke/indent-blankline.nvim',
     event = "BufRead",
-    setup = function()
-      vim.g.indentLine_enabled = 1
-      vim.g.indent_blankline_char = "▏"
-      vim.g.indent_blankline_filetype_exclude = {"help", "terminal", "dashboard"}
-      vim.g.indent_blankline_buftype_exclude = {"terminal"}
-      vim.g.indent_blankline_show_trailing_blankline_indent = false
-      vim.g.indent_blankline_show_first_indent_level = false
+    config = function () 
+	    require('configs.blankline').setup()
     end
   }
-  use {
-    'numToStr/Comment.nvim',
+  use { 'numToStr/Comment.nvim',
     event = "BufRead",
     config = function()
-        require('configs.comment').setup()
+       require('configs.comment').setup()
     end
   }
   use {
@@ -42,5 +38,22 @@ return require('packer').startup(function()
     config = function()
         require('configs.which-key').setup()
     end
+  }
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    config = function()
+      require("configs.treesitter").setup()
+    end,
+  }
+  use {
+    'hrsh7th/nvim-cmp',  
+    -- event = "InsertEnter",
+    config = function ()
+      require('configs.cmp').setup()
+    end,
+    requires = {
+      'neovim/nvim-lspconfig',
+      -- 'hrsh7th/cmp-cmdline',
+    },
   }
 end)

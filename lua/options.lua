@@ -36,9 +36,9 @@ local default_options = {
     expandtab = true,
     shiftwidth = 2,
     tabstop = 2,
-    number = ture,
+    number = true,
     relativenumber = false,
-    numberwidth = 4,
+    numberwidth = 2,
     signcolumn = "yes",
     scrolloff = 8, 
 }
