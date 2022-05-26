@@ -229,8 +229,11 @@ local cmp_conf = {
       require("luasnip").lsp_expand(args.body)
     end,
   },
-  documentation = {
-    border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+  -- documentation = {
+  --   border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+  -- },
+  window = {
+    documentation = cmp.config.window.bordered()
   },
   sources = {
     { name = "nvim_lsp" },
@@ -284,3 +287,5 @@ local cmp_conf = {
 function M.setup()
   require("cmp").setup(cmp_conf)
 end
+
+return M

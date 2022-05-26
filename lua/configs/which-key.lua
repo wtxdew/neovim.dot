@@ -76,6 +76,7 @@ M.mappings = function ()
     ["/"] = { "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", "Comment" },
     ["c"] = { "<cmd>BufferClose!<CR>", "Close Buffer" },
     ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
+    ["e"] = { "<cmd>NvimTreeToggle<CR>", "Explorer" },
     p = {
       name = "Packer",
       c = { "<cmd>PackerCompile<cr>", "Compile" },

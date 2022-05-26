@@ -8,15 +8,6 @@ return require('packer').startup(function()
   use 'wbthomason/packer.nvim'
   use 'EdenEast/nightfox.nvim'
   use 'github/copilot.vim'
-  -- use { "lukas-reineke/cmp-under-comparator" }
-	-- use { "saadparwaiz1/cmp_luasnip", after = "LuaSnip" }
-	-- use { "hrsh7th/cmp-nvim-lsp", after = "cmp_luasnip" }
-	-- use { "hrsh7th/cmp-nvim-lua", after = "cmp-nvim-lsp" }
-	-- use { "andersevenrud/cmp-tmux", after = "cmp-nvim-lua" }
-	-- use { "hrsh7th/cmp-path", after = "cmp-tmux" }
-	-- use { "f3fora/cmp-spell", after = "cmp-path" }
-	-- use { "hrsh7th/cmp-buffer", after = "cmp-spell" }
-	-- use { "kdheepak/cmp-latex-symbols", after = "cmp-buffer" }
   use 'rafamadriz/friendly-snippets'
   use 'L3MON4D3/LuaSnip'
   use {
@@ -56,4 +47,19 @@ return require('packer').startup(function()
       -- 'hrsh7th/cmp-cmdline',
     },
   }
+  use {
+    'kyazdani42/nvim-tree.lua',
+    config = function()
+      require('configs.nvimtree').setup()
+    end,
+    requires = {
+      'kyazdani42/nvim-web-devicons', -- optional, for file icon
+    },
+    tag = 'nightly' -- optional, updated every week. (see issue #1193)
+  }
+  -- use 'hrsh7th/cmp-nvim-lsp'
+  -- use "saadparwaiz1/cmp_luasnip"
+  -- use "hrsh7th/cmp-buffer"
+  -- use "hrsh7th/cmp-path"
+
 end)
