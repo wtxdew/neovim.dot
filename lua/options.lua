@@ -15,32 +15,33 @@ function _G.get_cache_dir()
 end
 
 local default_options = {
-    backup = false,
-    writebackup = false,
-    clipboard = "unnamedplus",
-    cmdheight = 2, colorcolumn = "80",
-    fileencoding = "utf-8",
-    hlsearch = true,
-    ignorecase = true,
-    mouse = "a",
-    showtabline = 2,
-    smartcase = true,
-    smartindent = true,
-    splitbelow = true, -- force all horizontal splits to go below current window
-    splitright = true, -- force all vertical splits to go to the right of current window
-    swapfile = false, -- creates a swapfile
-    termguicolors = true,
-    title = true,
-    undodir = get_cache_dir() .. "/undo", 
-    undofile = true,
-    expandtab = true,
-    shiftwidth = 2,
-    tabstop = 2,
-    number = true,
-    relativenumber = false,
-    numberwidth = 2,
-    signcolumn = "yes",
-    scrolloff = 8, 
+  backup = false,
+  background = "dark",
+  writebackup = false,
+  clipboard = "unnamedplus",
+  cmdheight = 2, colorcolumn = "80",
+  fileencoding = "utf-8",
+  hlsearch = true,
+  ignorecase = true,
+  mouse = "a",
+  showtabline = 2,
+  smartcase = true,
+  smartindent = true,
+  splitbelow = true, -- force all horizontal splits to go below current window
+  splitright = true, -- force all vertical splits to go to the right of current window
+  swapfile = false, -- creates a swapfile
+  termguicolors = true,
+  title = true,
+  undodir = get_cache_dir() .. "/undo", 
+  undofile = true,
+  expandtab = true,
+  shiftwidth = 2,
+  tabstop = 2,
+  number = true,
+  relativenumber = false,
+  numberwidth = 2,
+  signcolumn = "yes",
+  scrolloff = 8, 
 }
 
 function M.load_default_options ()

@@ -121,7 +121,8 @@ local conf = {
 
 
 M.setup = function()
-  require("nvim-tree").setup(conf)
+  require'nvim-tree'.setup(conf)
+  vim.cmd[[autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif]]
 end
 
 return M

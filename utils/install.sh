@@ -39,7 +39,7 @@ function setup() {
   "$INSTALL_PREFIX/bin/nvim" --headless \
     -c 'autocmd User PackerComplete quitall' \
     -c 'PackerSync'
-  echo "Packer setup complete"
+  echo "\r Packer setup complete"
 }
 
 ###

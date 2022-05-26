@@ -1,14 +1,15 @@
 
+-- Leader set 
 vim.g.mapleader = " "
-require("autocmd")
--- require("plugins")
+
+-- Load Plugins 
 local plugins = require("plugins")
 require("plugin-loader").init()
 require("plugin-loader").load {plugins}
-require'nvim-tree'.setup {}
 
-vim.cmd[[autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif]]
-
-require("keymap").load_defaults()
 require("options").load_default_options()
+require("keymap").load_defaults()
+require("autocmd")
+
 vim.cmd("colorscheme dayfox")
+-- vim.cmd("colorscheme onedark")

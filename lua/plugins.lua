@@ -1,7 +1,6 @@
 
 local M = {
   {'wbthomason/packer.nvim'},
-  {'EdenEast/nightfox.nvim'},
   {'github/copilot.vim'},
   {'rafamadriz/friendly-snippets'},
   {'L3MON4D3/LuaSnip'},
@@ -53,6 +52,14 @@ local M = {
     },
     tag = 'nightly' -- optional, updated every week. (see issue #1193)
   },
+  -- Telescope
+  {
+    "nvim-telescope/telescope.nvim",
+    config = function()
+      require("plugin-config.telescope").setup()
+    end,
+     requires = { {'nvim-lua/plenary.nvim'} },
+  },
   {
     "nvim-telescope/telescope-fzf-native.nvim",
     run = "make",
@@ -63,7 +70,9 @@ local M = {
       require("plugin-config.bufferline").setup()
     end,
     event = "BufWinEnter",
-  }
+  },
+  {"navarasu/onedark.nvim"},
+  {'EdenEast/nightfox.nvim'},
 }
 
 return M 
