@@ -25,16 +25,15 @@ function remove_old_cache_files() {
     rm -f "$packer_cache"
   fi
 
-  if [ -e "$NVIM_CACHE_DIR/luacache" ] || [ -e "$NVIM_CACHE_DIR/lvim_cache" ]; then
+  if [ -e "$NVIM_CACHE_DIR/luacache" ] || [ -e "$NVIM_CACHE_DIR/ivim_cache" ]; then
     msg "Removing old startup cache file"
-    rm -f "$NVIM_CACHE_DIR/{luacache,nvim_cache}"
+    rm -f "$NVIM_CACHE_DIR/{luacache,ivim_cache}"
   fi
 }
 
 ###
-function setup_lvim() {
+function setup() {
   #remove_old_cache_files
-  #setup_shim
 
   echo "Preparing Packer setup"
   "$INSTALL_PREFIX/bin/nvim" --headless \
@@ -60,7 +59,6 @@ function backup_old_config() {
     return
   fi
   mkdir -p "$src.old"
-  touch "$src/ignore"
   msg "Backing up old $src to $src.old"
   if command -v rsync &>/dev/null; then
     rsync --archive -hh --stats --partial --copy-links --cvs-exclude "$src"/ "$src.old"
@@ -104,7 +102,13 @@ function check_system_deps() {
     print_missing_dep_msg "neovim"
     exit 1
   fi
-  check_neovim_min_version
+
+  local verify_version_cmd='if !has("nvim-0.7") | cquit | else | quit | endif'
+  # exit with an error if min_version not found
+  if ! nvim --headless -u NONE -c "$verify_version_cmd"; then
+    echo "[ERROR]: Requires at least Neovim v0.7 or higher"
+    exit 1
+  fi
 }
 
 ###
@@ -145,13 +149,13 @@ function detect_platform() {
 # Main function
 ################################################################################
 function main() {
-  parse_arguments "$@"
+  # parse_arguments "$@"
   msg "Detecting platform for managing any additional neovim dependencies"
   detect_platform
   check_system_deps
   backup_old_config
   clone_dot
-  setup_lvim
+  setup
 }
 
 main "$@"
