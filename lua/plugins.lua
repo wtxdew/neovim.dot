@@ -42,6 +42,7 @@ local M = {
       -- 'hrsh7th/cmp-cmdline',
     },
   },
+  {'ray-x/cmp-treesitter'},
   {
     'kyazdani42/nvim-tree.lua',
     config = function()

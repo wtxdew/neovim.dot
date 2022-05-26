@@ -156,6 +156,52 @@ M.methods.jumpable = jumpable
 --   end
 -- end
 
+local icons = {
+  kind_icons = {
+    Class = " ",
+    Color = " ",
+    Constant = "ﲀ ",
+    Constructor = " ",
+    Enum = "練",
+    EnumMember = " ",
+    Event = " ",
+    Field = " ",
+    File = "",
+    Folder = " ",
+    Function = " ",
+    Interface = "ﰮ ",
+    Keyword = " ",
+    Method = " ",
+    Module = " ",
+    Operator = "",
+    Property = " ",
+    Reference = " ",
+    Snippet = " ",
+    Struct = " ",
+    Text = " ",
+    TypeParameter = " ",
+    Unit = "塞",
+    Value = " ",
+    Variable = " ",
+  },
+  source_names = {
+    nvim_lsp = "(LSP)",
+    emoji = "(Emoji)",
+    path = "(Path)",
+    calc = "(Calc)",
+    cmp_tabnine = "(Tabnine)",
+    vsnip = "(Snippet)",
+    luasnip = "(Snippet)",
+    buffer = "(Buffer)",
+  },
+  duplicates = {
+    buffer = 1,
+    path = 1,
+    nvim_lsp = 0,
+    luasnip = 1,
+  },
+  duplicates_default = 0,
+}
 local cmp = require("cmp")
 local cmp_conf = {
   confirm_opts = {
@@ -172,55 +218,15 @@ local cmp_conf = {
   },
   formatting = {
     fields = { "kind", "abbr", "menu" },
-    kind_icons = {
-      Class = " ",
-      Color = " ",
-      Constant = "ﲀ ",
-      Constructor = " ",
-      Enum = "練",
-      EnumMember = " ",
-      Event = " ",
-      Field = " ",
-      File = "",
-      Folder = " ",
-      Function = " ",
-      Interface = "ﰮ ",
-      Keyword = " ",
-      Method = " ",
-      Module = " ",
-      Operator = "",
-      Property = " ",
-      Reference = " ",
-      Snippet = " ",
-      Struct = " ",
-      Text = " ",
-      TypeParameter = " ",
-      Unit = "塞",
-      Value = " ",
-      Variable = " ",
-    },
-    source_names = {
-      nvim_lsp = "(LSP)",
-      emoji = "(Emoji)",
-      path = "(Path)",
-      calc = "(Calc)",
-      cmp_tabnine = "(Tabnine)",
-      vsnip = "(Snippet)",
-      luasnip = "(Snippet)",
-      buffer = "(Buffer)",
-    },
-    duplicates = {
-      buffer = 1,
-      path = 1,
-      nvim_lsp = 0,
-      luasnip = 1,
-    },
+    kind_icons = icons.kind_icons,
+    source_names = icons.source_names,
+    duplicates = icons.duplicates,
     duplicates_default = 0,
     format = function(entry, vim_item)
-      vim_item.kind = cmp_conf.formatting.kind_icons[vim_item.kind]
-      vim_item.menu = cmp_conf.formatting.source_names[entry.source.name]
-      vim_item.dup = cmp_conf.formatting.duplicates[entry.source.name]
-      or cmp_conf.formatting.duplicates_default
+      vim_item.kind = icons.kind_icons[vim_item.kind]
+      vim_item.menu = icons.source_names[entry.source.name]
+      vim_item.dup = icons.duplicates[entry.source.name]
+      or icons.duplicates_default
       return vim_item
     end,
   },
@@ -261,27 +267,27 @@ local cmp_conf = {
         fallback()
       end
     end, {
-      "i",
-      "s",
-    }),
-    ["<C-Space>"] = cmp.mapping.complete(),
-    ["<C-e>"] = cmp.mapping.abort(),
-    ["<CR>"] = cmp.mapping(function(fallback)
-      if cmp.visible() and cmp.confirm(cmp_conf.confirm_opts) then
-        if jumpable() then
-          luasnip.jump(1)
-        end
-        return
-      end
+    "i",
+    "s",
+  }),
+  ["<C-Space>"] = cmp.mapping.complete(),
+  ["<C-e>"] = cmp.mapping.abort(),
+  ["<CR>"] = cmp.mapping(function(fallback)
+    if cmp.visible() and cmp.confirm(cmp_conf.confirm_opts) then
       if jumpable() then
-        if not luasnip.jump(1) then
-          fallback()
-        end
-      else
+        luasnip.jump(1)
+      end
+      return
+    end
+    if jumpable() then
+      if not luasnip.jump(1) then
         fallback()
       end
-    end),
-  },
+    else
+      fallback()
+    end
+  end),
+},
 }
 
 function M.setup()

@@ -34,7 +34,6 @@ function remove_old_cache_files() {
 ###
 function setup() {
   #remove_old_cache_files
-
   echo "Preparing Packer setup"
   "$INSTALL_PREFIX/bin/nvim" --headless \
     -c 'autocmd User PackerComplete quitall' \
@@ -102,7 +101,6 @@ function check_system_deps() {
     print_missing_dep_msg "neovim"
     exit 1
   fi
-
   local verify_version_cmd='if !has("nvim-0.7") | cquit | else | quit | endif'
   # exit with an error if min_version not found
   if ! nvim --headless -u NONE -c "$verify_version_cmd"; then
@@ -156,6 +154,7 @@ function main() {
   backup_old_config
   clone_dot
   setup
+  msg "Neovim setup complete"
 }
 
 main "$@"
