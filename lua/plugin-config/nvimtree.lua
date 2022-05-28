@@ -1,6 +1,6 @@
 local M = {}
 
-local conf = {
+local configs = {
   auto_reload_on_write = true,
   disable_netrw = true,
   hijack_cursor = false,
@@ -40,7 +40,7 @@ local conf = {
     },
     icons = {
       webdev_colors = true,
-      git_placement = "before",
+      -- git_placement = "before",
     },
   },
   hijack_directories = {
@@ -48,17 +48,17 @@ local conf = {
     auto_open = true,
   },
   update_focused_file = {
-    enable = false,
-    update_cwd = false,
+    enable = true,
+    update_cwd = true,
     ignore_list = {},
   },
   ignore_ft_on_setup = {},
   system_open = {
-    cmd = "",
+    cmd = nil,
     args = {},
   },
   diagnostics = {
-    enable = false,
+    enable = true,
     show_on_dirs = false,
     icons = {
       hint = "",
@@ -86,7 +86,7 @@ local conf = {
     },
     open_file = {
       quit_on_open = false,
-      resize_window = true,
+      resize_window = false,
       window_picker = {
         enable = true,
         chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
@@ -119,9 +119,61 @@ local conf = {
   },
 } -- END_DEFAULT_OPTS
 
+local options = {
+  show_icons = {
+    git = 0, 
+    folders = 1,
+    files = 1,
+    folder_arrows = 1,
+  },
+  highlight_opend_files = 3, -- 0:no highlight(default), 1:highlight icons, 2:highlight names, 3:highlight icons and names
+  icons = {
+    default =        "",
+    symlink=        "",
+    git = {
+      unstaged =     "✗",
+      staged =       "✓",
+      unmerged =     "",
+      renamed =      "➜",
+      untracked =    "★",
+      deleted =      "",
+    },
+    folder = {
+      arrow_open =   "",
+      arrow_closed = "",
+      default =      "",
+      open =         "",
+      empty =        "",
+      empty_open =   "",
+      symlink =      "",
+      symlink_open = "",
+    },
+    lsp = {
+      hint = "",
+      info = "",
+      warning = "",
+      error = "",
+    }
+  },
+  git_hl = 1,
+  root_folder_modifier = ":t",
+  add_trailing = 1,
+  group_empty = 1,
+  special_files = {
+    ["Cargo.toml"] = true,
+    Makefile = true,
+    ["README.md"] = true,
+    ["readme.md"] = true,
+  },
+}
 
 M.setup = function()
-  require'nvim-tree'.setup(conf)
+  -- load global options. See :help nvim-tree.options
+  for opt, val in pairs(options) do 
+    vim.g["nvim_tree_" .. opt] = val 
+  end
+  -- call setup function.
+  require'nvim-tree'.setup(configs)
   vim.cmd[[autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif]]
 end
 

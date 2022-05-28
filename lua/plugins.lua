@@ -4,21 +4,21 @@ local M = {
     'lukas-reineke/indent-blankline.nvim',
     event = "BufRead",
     config = function()
-        require('plugin-config.blankline').setup()
+      require('plugin-config.blankline').setup()
     end
   },
   {
     'numToStr/Comment.nvim',
     event = "BufRead",
     config = function()
-        require('plugin-config.comment').setup()
+      require('plugin-config.comment').setup()
     end
   },
   {
     'folke/which-key.nvim',
     event = "BufWinEnter",
     config = function()
-        require('plugin-config.which-key').setup()
+      require('plugin-config.which-key').setup()
     end
   },
 
@@ -27,7 +27,7 @@ local M = {
   {
     'nvim-treesitter/nvim-treesitter',
     config = function()
-        require("plugin-config.treesitter").setup()
+      require("plugin-config.treesitter").setup()
     end,
   },
   { 'rafamadriz/friendly-snippets' },
@@ -40,7 +40,7 @@ local M = {
     'hrsh7th/nvim-cmp',
     -- event = "InsertEnter",
     config = function()
-        require('plugin-config.cmp').setup()
+      require('plugin-config.cmp').setup()
     end,
     requires = {
       'neovim/nvim-lspconfig',
@@ -56,19 +56,29 @@ local M = {
   {
     'kyazdani42/nvim-tree.lua',
     config = function()
-        require('plugin-config.nvimtree').setup()
+      require('plugin-config.nvimtree').setup()
     end,
     requires = {
       'kyazdani42/nvim-web-devicons', -- optional, for file icon
     },
     tag = 'nightly' -- optional, updated every week. (see issue #1193)
   },
+    {
+    "lewis6991/gitsigns.nvim",
+
+    config = function()
+      require("plugin-config.gitsigns").setup()
+    end,
+    event = "BufRead",
+    -- disable = not lvim.builtin.gitsigns.active,
+  },
+
 
   -- Telescope
   {
     "nvim-telescope/telescope.nvim",
     config = function()
-        require("plugin-config.telescope").setup()
+      require("plugin-config.telescope").setup()
     end,
     requires = { { 'nvim-lua/plenary.nvim' } },
   },
@@ -77,16 +87,19 @@ local M = {
     run = "make",
   },
 
-  -- Appreance
+  -- UI
   {
     "romgrk/barbar.nvim",
     config = function()
-        require("plugin-config.bufferline").setup()
+      require("plugin-config.bufferline").setup()
     end,
     event = "BufWinEnter",
   },
   { "navarasu/onedark.nvim" },
   { 'EdenEast/nightfox.nvim' },
+  { 'nvim-lualine/lualine.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+  }
 }
 
 return M
