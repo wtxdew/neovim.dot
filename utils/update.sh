@@ -12,6 +12,7 @@ declare -r NVIM_CACHE_DIR="${NVIM_CACHE_DIR:-"$XDG_CACHE_HOME/nvim"}"
 function msg() {
   local text="$1"
   local div_width="80"
+  printf "%s\n"
   printf "%${div_width}s\n" ' ' | tr ' ' -
   printf "%s\n" "$text"
 }
