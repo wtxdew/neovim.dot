@@ -1,6 +1,6 @@
 local M = {}
 
-local conf = {
+local config = {
   signs                        = {
     add          = { hl = 'GitSignsAdd', text = '│', numhl = 'GitSignsAddNr', linehl = 'GitSignsAddLn' },
     change       = { hl = 'GitSignsChange', text = '│', numhl = 'GitSignsChangeNr', linehl = 'GitSignsChangeLn' },
@@ -45,7 +45,8 @@ local conf = {
 }
 
 function M.setup()
-  require "gitsigns".setup(conf)
+  -- Call setup function.
+  require "gitsigns".setup(config)
 end
 
 return M

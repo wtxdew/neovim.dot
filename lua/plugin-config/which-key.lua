@@ -74,7 +74,7 @@ end
 M.mappings = function ()
   local mappings = {
     ["/"] = { "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", "Comment" },
-    ["c"] = { "<cmd>BufferClose!<CR>", "Close Buffer" },
+    ["c"] = { "<cmd>lua require('core.commands').buf_kill() <CR>", "Close Buffer" },
     ["e"] = { "<cmd>NvimTreeToggle<CR>", "Explorer" },
     ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
     b = {

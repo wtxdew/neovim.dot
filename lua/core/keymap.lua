@@ -40,8 +40,8 @@ local normal_mode = {
   ["<C-Right>"] = ":vertical resize +2<CR>",
 
   -- Tab switch buffer
-  ["<S-l>"] = ":BufferNext<CR>",
-  ["<S-h>"] = ":BufferPrevious<CR>",
+  ["<S-l>"] = ":BufferLineCycleNext<CR>",
+  ["<S-h>"] = ":BufferLineCyclePrev<CR>",
 
   -- QuickFix
   ["]q"] = ":cnext<CR>",

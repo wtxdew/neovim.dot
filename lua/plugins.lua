@@ -63,7 +63,7 @@ local M = {
     },
     tag = 'nightly' -- optional, updated every week. (see issue #1193)
   },
-    {
+  {
     "lewis6991/gitsigns.nvim",
 
     config = function()
@@ -88,11 +88,11 @@ local M = {
   },
 
   -- UI
-  {
-    "romgrk/barbar.nvim",
+  { 'akinsho/bufferline.nvim', 
     config = function()
-      require("plugin-config.bufferline").setup()
+      require('plugin-config.bufferline').setup()
     end,
+    branch = "main",
     event = "BufWinEnter",
   },
   { "navarasu/onedark.nvim" },
