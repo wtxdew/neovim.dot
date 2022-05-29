@@ -32,7 +32,7 @@ local M = {
   { 'saadparwaiz1/cmp_luasnip' },
   { 'github/copilot.vim' },
 
-  -- Tools 
+  -- Tools
   {
     'numToStr/Comment.nvim',
     event = "BufRead",
@@ -86,18 +86,18 @@ local M = {
     event = "BufRead",
     -- disable = not lvim.builtin.gitsigns.active,
   },
-  { 
-    'akinsho/bufferline.nvim', 
+  {
+    'akinsho/bufferline.nvim',
     config = function()
       require('plugins.configs.bufferline').setup()
     end,
     branch = "main",
     event = "BufWinEnter",
   },
-  { 
+  {
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-  }
+  },
   { "navarasu/onedark.nvim" },
   { 'EdenEast/nightfox.nvim' },
 }
