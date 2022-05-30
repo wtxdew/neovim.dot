@@ -102,7 +102,13 @@ local M = {
   },
   {
     'nvim-lualine/lualine.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+    config = function()
+      require('plugins.configs.lualine').Setup()
+    end,
+    requires = { 
+      'kyazdani42/nvim-web-devicons',
+      opt = true
+    },
   },
   { "navarasu/onedark.nvim" },
   { 'EdenEast/nightfox.nvim' },

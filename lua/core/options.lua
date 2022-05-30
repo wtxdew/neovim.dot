@@ -24,6 +24,7 @@ local default_options = {
   hlsearch = true,
   ignorecase = true,
   mouse = "a",
+  showcmd = true,
   showtabline = 2,
   smartcase = true,
   smartindent = true,
