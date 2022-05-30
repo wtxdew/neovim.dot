@@ -31,6 +31,7 @@ local default_options = {
   splitright = true, -- force all vertical splits to go to the right of current window
   swapfile = false, -- creates a swapfile
   termguicolors = true,
+  timeoutlen = 250, 
   title = true,
   undodir = get_cache_dir() .. "/undo", 
   undofile = true,

@@ -58,6 +58,12 @@ local M = {
     "nvim-telescope/telescope-fzf-native.nvim",
     run = "make",
   },
+  {
+    "akinsho/toggleterm.nvim",  
+    config = function()
+      require("plugins.configs.toggleterm").setup()
+    end,
+  },
 
   -- Appearance
   {

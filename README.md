@@ -1,5 +1,9 @@
 # install 
-`bash <(curl -s https://raw.githubusercontent.com/wtxdew/neovim.dot/master/utils/install.sh)`
+```
+git clone https://github.com/wtxdew/neovim.dot.git ~/.config/nvim/
+nvim +PackerSync
+```
+
 # Config
 
 # TO-DO

@@ -1,6 +1,6 @@
 local M = {}
 
-M.config = function () 
+M.config = function()
   local setup = {
     plugins = {
       marks = true, -- shows a list of your marks on ' and `
@@ -40,7 +40,7 @@ M.config = function ()
   return setup
 end
 
-M.opts = function ()
+M.opts = function()
   options = {
     mode = "n", -- NORMAL mode
     prefix = "<leader>",
@@ -52,7 +52,7 @@ M.opts = function ()
   return options
 end
 
-M.vopts = function ()
+M.vopts = function()
   options = {
     mode = "v", -- VISUAL mode
     prefix = "<leader>",
@@ -64,14 +64,14 @@ M.vopts = function ()
   return options
 end
 
-M.vmappings = function ()
+M.vmappings = function()
   local mappings = {
     ["/"] = { "<ESC><CMD>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>", "Comment" },
   }
   return mappings
 end
 
-M.mappings = function ()
+M.mappings = function()
   local mappings = {
     ["/"] = { "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", "Comment" },
     ["c"] = { "<cmd>lua require('core.commands').buf_kill() <CR>", "Close Buffer" },
@@ -79,26 +79,51 @@ M.mappings = function ()
     ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
     b = {
       name = "Buffers",
-      j = { "<cmd>BufferPick<cr>", "Jump" },
+      j = { "<cmd>BufferLinePick<cr>", "Jump" },
       f = { "<cmd>Telescope buffers<cr>", "Find" },
-      b = { "<cmd>b#<cr>", "Previous" },
-      w = { "<cmd>BufferWipeout<cr>", "Wipeout" },
+      b = { "<cmd>BufferLineCyclePrev<cr>", "Previous" },
+      -- w = { "<cmd>BufferWipeout<cr>", "Wipeout" }, -- TODO: implement this for bufferline
       e = {
-        "<cmd>BufferCloseAllButCurrent<cr>",
-        "Close all but current",
+        "<cmd>BufferLinePickClose<cr>",
+        "Pick which buffer to close",
       },
-      h = { "<cmd>BufferCloseBuffersLeft<cr>", "Close all to the left" },
+      h = { "<cmd>BufferLineCloseLeft<cr>", "Close all to the left" },
       l = {
-        "<cmd>BufferCloseBuffersRight<cr>",
+        "<cmd>BufferLineCloseRight<cr>",
         "Close all to the right",
       },
       D = {
-        "<cmd>BufferOrderByDirectory<cr>",
+        "<cmd>BufferLineSortByDirectory<cr>",
         "Sort by directory",
       },
       L = {
-        "<cmd>BufferOrderByLanguage<cr>",
+        "<cmd>BufferLineSortByExtension<cr>",
         "Sort by language",
+      },
+    },
+    g = {
+      name = "Git",
+      j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
+      k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
+      l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
+      p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
+      r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
+      R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
+      s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
+      u = {
+        "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
+        "Undo Stage Hunk",
+      },
+      o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
+      b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
+      c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
+      C = {
+        "<cmd>Telescope git_bcommits<cr>",
+        "Checkout commit(for current file)",
+      },
+      d = {
+        "<cmd>Gitsigns diffthis HEAD<cr>",
+        "Git Diff",
       },
     },
     p = {

@@ -34,10 +34,10 @@ local normal_mode = {
   ["<C-l>"] = "<C-w>l",
 
   -- Resize with arrows
-  ["<C-Up>"] = ":resize -2<CR>",
-  ["<C-Down>"] = ":resize +2<CR>",
-  ["<C-Left>"] = ":vertical resize -2<CR>",
-  ["<C-Right>"] = ":vertical resize +2<CR>",
+  ["<C-S-Up>"] = ":resize -2<CR>",
+  ["<C-S-Down>"] = ":resize +2<CR>",
+  ["<C-S-Left>"] = ":vertical resize -2<CR>",
+  ["<C-S-Right>"] = ":vertical resize +2<CR>",
 
   -- Tab switch buffer
   ["<S-l>"] = ":BufferLineCycleNext<CR>",
@@ -48,6 +48,8 @@ local normal_mode = {
   ["[q"] = ":cprev<CR>",
   ["<C-q>"] = ":call QuickFixToggle()<CR>",
 
+  ["<C-t>"] = ":ToggleTerm  direction=float<CR>",
+  ["<C-\\>"] = ":ToggleTerm  direction=horizontal<CR>",
   ["<C-s>"] = ":w<cr>",
 }
 
@@ -58,6 +60,8 @@ local term_mode = {
   ["<C-j>"] = "<C-\\><C-N><C-w>j",
   ["<C-k>"] = "<C-\\><C-N><C-w>k",
   ["<C-l>"] = "<C-\\><C-N><C-w>l",
+  ["<C-t>"] = "<CMD>:ToggleTerm<CR>",
+  ["<C-\\>"] = "<CMD>:ToggleTerm<CR>",
 }
 
 ---@usage change or add keymappings for visual mode
@@ -89,8 +93,10 @@ function M.load_defaults()
   M.set_keymap(command_mode, "c")
 end
 
+-- autocmd TermEnter term://*toggleterm#* tnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
+
 function M.set_keymap(keymaps, mode_short)
-  for key, val in pairs(keymaps) do 
+  for key, val in pairs(keymaps) do
     local opt = { noremap = true, silent = true }
     if type(val) == "table" then
       opt = val[2]

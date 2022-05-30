@@ -11,21 +11,7 @@ vim.cmd [[
 ]]
 
 M.defaults = {
-  -- {
-  --   name = "IvimUpdate",
-  --   fn = function()
-  --       M.IvimUpdate()
-  --   end
-  -- },
 }
-
--- function M:IvimUpdate()
---     -- require_clean("lvim.utils.hooks").run_pre_update()
---     local ret = require_clean("utils.git").update_base_ivim()
---     if ret then
---         require_clean("lvim.utils.hooks").run_post_update()
---     end
--- end
 
 ---
 function M.Load(config)
@@ -36,6 +22,7 @@ function M.Load(config)
   end
 end
 
+---
 function M.buf_kill(bufnr)
   local bo = vim.bo
   local api = vim.api
