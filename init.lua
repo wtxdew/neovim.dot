@@ -1,6 +1,3 @@
--- Leader set
-vim.g.mapleader = " "
-
 -- Load core setting
 require ("core")
 

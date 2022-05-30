@@ -1,4 +1,7 @@
 
+-- Leader set
+vim.g.mapleader = " "
+
 local plugins = require("plugins.plugins")
 
 require("core.plugin-loader").init()
