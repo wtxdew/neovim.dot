@@ -1,4 +1,4 @@
-#Prerequisites
+# Prerequisites
 - Neovim v0.7.0+
 
 # install 
