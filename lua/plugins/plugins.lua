@@ -44,7 +44,7 @@ local M = {
     'folke/which-key.nvim',
     event = "BufWinEnter",
     config = function()
-      require('plugins.configs.which-key').setup()
+      require('plugins.configs.which-key').Setup()
     end
   },
   {
