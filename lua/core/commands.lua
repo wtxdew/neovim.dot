@@ -34,7 +34,7 @@ function M.buf_kill(bufnr)
   local kill_command = "bd"
 
   -- If buffer is modified and force isn't true, print error and abort
-  if not bo[bufnr].modified then
+  if not force and bo[bufnr].modified then
     return api.nvim_err_writeln(
       string.format("No write since last change for buffer %d (set force to true to override)", bufnr)
     )
