@@ -1,8 +1,8 @@
 local autocmd = {}
 
 local definitions = {
-  packer = {},
-  bufs = {
+  packer                 = {},
+  bufs                   = {
     -- Reload vim config automatically
     {
       "BufWritePost",
@@ -38,7 +38,7 @@ local definitions = {
     --   "set filetype=sh",
     -- },
   },
-  wins = {
+  wins                   = {
     -- Highlight current line only on focused window
     {
       "WinEnter,BufEnter,InsertLeave",
@@ -61,7 +61,7 @@ local definitions = {
     -- Equalize window dimensions when resizing vim window
     { "VimResized", "*", [[tabdo wincmd =]] },
   },
-  ft = {
+  ft                     = {
     { "FileType", "markdown", "set wrap" },
     { "FileType", "make", "set noexpandtab shiftwidth=8 softtabstop=0" },
     -- Google tab style
@@ -83,7 +83,7 @@ local definitions = {
       "nnoremap <leader>h :ClangdSwitchSourceHeaderVSplit<CR>",
     },
   },
-  yank = {
+  yank                   = {
     {
       "TextYankPost",
       "*",
@@ -102,7 +102,7 @@ function autocmd.nvim_create_augroups(definitions)
     end
     vim.api.nvim_command("augroup END")
   end
-  vim.api.nvim_create_autocmd({"BufNewFile","BufRead"}, {pattern = "*.mac", command = "set filetype=sh"})
+  vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, { pattern = "*.mac", command = "set filetype=sh" })
 end
 
 function autocmd.loadcmds()

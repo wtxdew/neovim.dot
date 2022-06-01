@@ -237,7 +237,7 @@ local cmp_conf = {
 }
 
 function M.setup()
-    require("cmp").setup(cmp_conf)
+  require("cmp").setup(cmp_conf)
 end
 
 return M

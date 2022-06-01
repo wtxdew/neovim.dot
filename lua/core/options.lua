@@ -36,6 +36,7 @@ local default_options = {
   title = true,
   undodir = get_cache_dir() .. "/undo", 
   undofile = true,
+  updatetime = 300, -- faster completion
   expandtab = true,
   shiftwidth = 2,
   tabstop = 2,
