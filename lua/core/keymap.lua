@@ -51,6 +51,8 @@ local normal_mode = {
   ["<C-t>"] = ":ToggleTerm  direction=float<CR>",
   ["<C-\\>"] = ":ToggleTerm  direction=horizontal<CR>",
   ["<C-s>"] = ":w<cr>",
+
+  ["<F6>"] = ":set ft=sh<CR>",
 }
 
 ---@usage change or add keymappings for terminal mode

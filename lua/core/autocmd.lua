@@ -32,6 +32,11 @@ local definitions = {
       "*",
       [[++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif]],
     },
+    -- {
+    --   "BufNewFile,BufRead",
+    --   "*.mac",
+    --   "set filetype=sh",
+    -- },
   },
   wins = {
     -- Highlight current line only on focused window
@@ -97,6 +102,7 @@ function autocmd.nvim_create_augroups(definitions)
     end
     vim.api.nvim_command("augroup END")
   end
+  vim.api.nvim_create_autocmd({"BufNewFile","BufRead"}, {pattern = "*.mac", command = "set filetype=sh"})
 end
 
 function autocmd.loadcmds()
