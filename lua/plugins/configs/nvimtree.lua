@@ -40,7 +40,50 @@ local configs = {
     },
     icons = {
       webdev_colors = true,
-      -- git_placement = "before",
+      show = {
+        git = false,
+        folder = true,
+        file = true,
+        folder_arrow = true,
+      },
+      glyphs = {
+        default =        "",
+        symlink=        "",
+        git = {
+          unstaged =     "✗",
+          staged =       "✓",
+          unmerged =     "",
+          renamed =      "➜",
+          untracked =    "★",
+          deleted =      "",
+        },
+        folder = {
+          arrow_open =   "",
+          arrow_closed = "",
+          default =      "",
+          open =         "",
+          empty =        "",
+          empty_open =   "",
+          symlink =      "",
+          symlink_open = "",
+        },
+        -- lsp = {
+        --   hint = "",
+        --   info = "",
+        --   warning = "",
+        --   error = "",
+        -- }
+      },
+    },
+    highlight_git = true,
+    root_folder_modifier = ":t",
+    add_trailing = true,
+    group_empty = true,
+    special_files = {
+      ["Cargo.toml"] = true,
+      Makefile = true,
+      ["README.md"] = true,
+      ["readme.md"] = true,
     },
   },
   hijack_directories = {
@@ -120,57 +163,16 @@ local configs = {
 } -- END_DEFAULT_OPTS
 
 local options = {
-  show_icons = {
-    git = 0, 
-    folders = 1,
-    files = 1,
-    folder_arrows = 1,
-  },
   highlight_opend_files = 3, -- 0:no highlight(default), 1:highlight icons, 2:highlight names, 3:highlight icons and names
-  icons = {
-    default =        "",
-    symlink=        "",
-    git = {
-      unstaged =     "✗",
-      staged =       "✓",
-      unmerged =     "",
-      renamed =      "➜",
-      untracked =    "★",
-      deleted =      "",
-    },
-    folder = {
-      arrow_open =   "",
-      arrow_closed = "",
-      default =      "",
-      open =         "",
-      empty =        "",
-      empty_open =   "",
-      symlink =      "",
-      symlink_open = "",
-    },
-    lsp = {
-      hint = "",
-      info = "",
-      warning = "",
-      error = "",
-    }
-  },
-  git_hl = 1,
-  root_folder_modifier = ":t",
-  add_trailing = 1,
-  group_empty = 1,
-  special_files = {
-    ["Cargo.toml"] = true,
-    Makefile = true,
-    ["README.md"] = true,
-    ["readme.md"] = true,
-  },
+}
+local new_setup = {
+
 }
 
 M.setup = function()
   -- load global options. See :help nvim-tree.options
-  for opt, val in pairs(options) do 
-    vim.g["nvim_tree_" .. opt] = val 
+  for opt, val in pairs(options) do
+    vim.g["nvim_tree_" .. opt] = val
   end
   -- call setup function.
   require'nvim-tree'.setup(configs)

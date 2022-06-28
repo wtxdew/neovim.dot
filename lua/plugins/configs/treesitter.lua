@@ -6,7 +6,7 @@ M.config = function()
 	vim.api.nvim_command("set foldexpr=nvim_treesitter#foldexpr()")
 
 	require("nvim-treesitter.configs").setup({
-		ensure_installed = {"cpp", "lua", "c", "python", "make", "latex", "bash"},
+		ensure_installed = {"cpp", "lua", "c", "python", "make", "bash"},
 		highlight = { 
       enable = true, 
       additional_vim_regex_highlighting = true,

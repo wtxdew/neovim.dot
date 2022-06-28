@@ -34,4 +34,3 @@ vim.api.nvim_create_autocmd("CursorMoved", {
   buffer = vim.fn.bufnr(),
   callback = vim.lsp.buf.clear_references,
 })
-
