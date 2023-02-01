@@ -1,9 +1,10 @@
--- local lsp_installer = require "nvim-lsp-installer"
-
--- 安装列表
--- https://github.com/williamboman/nvim-lsp-installer#available-lsps
--- { key: language, value: config_file}
--- local servers = { sumneko_lua = require "lsp.lua", -- /lua/lsp/lua.lua
+local lsp_installer = require "nvim-lsp-installer"
+--
+-- -- 安装列表
+-- -- https://github.com/williamboman/nvim-lsp-installer#available-lsps
+-- -- { key: language, value: config_file}
+-- local servers = {
+--   sumneko_lua = require "lsp.lua", -- /lua/lsp/lua.lua
 -- }
 --
 -- -- 自动安装 LanguageServers
@@ -16,21 +17,27 @@
 --     end
 --   end
 -- end
+--
 
-require("nvim-lsp-installer").setup {}
-
+lsp_installer.setup {}
 local lspconfig = require("lspconfig")
-lspconfig.sumneko_lua.setup ( require "lsp.lua".setup )
-lspconfig.clangd.setup { }
 
-vim.api.nvim_create_augroup("lsp_document_highlight", {})
-vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-  group = "lsp_document_highlight",
-  buffer = vim.fn.bufnr(),
-  callback = vim.lsp.buf.document_highlight,
-})
-vim.api.nvim_create_autocmd("CursorMoved", {
-  group = "lsp_document_highlight",
-  buffer = vim.fn.bufnr(),
-  callback = vim.lsp.buf.clear_references,
-})
+-- lspconfig.sumneko_lua.setup ( require "lsp.lua".setup )
+-- lspconfig.clangd.setup {}
+
+for _, server in ipairs(lsp_installer.get_installed_servers()) do
+  -- vim.pretty_print(server.name)
+  lspconfig[server.name].setup{ }
+end
+
+-- vim.api.nvim_create_augroup("lsp_document_highlight", {})
+-- vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+--   group = "lsp_document_highlight",
+--   buffer = vim.fn.bufnr(),
+--   callback = vim.lsp.buf.document_highlight,
+-- })
+-- vim.api.nvim_create_autocmd("CursorMoved", {
+--   group = "lsp_document_highlight",
+--   buffer = vim.fn.bufnr(),
+--   callback = vim.lsp.buf.clear_references,
+-- })

@@ -62,7 +62,7 @@ local M = {
     run = "make",
   },
   {
-    "akinsho/toggleterm.nvim",  
+    "akinsho/toggleterm.nvim",
     config = function()
       require("plugins.configs.toggleterm").setup()
     end,
@@ -95,6 +95,8 @@ local M = {
     event = "BufRead",
     -- disable = not lvim.builtin.gitsigns.active,
   },
+
+  -- Top line
   {
     'akinsho/bufferline.nvim',
     config = function()
@@ -103,18 +105,27 @@ local M = {
     branch = "main",
     event = "BufWinEnter",
   },
+
+  -- bottom line 
   {
     'nvim-lualine/lualine.nvim',
     config = function()
       require('plugins.configs.lualine').Setup()
     end,
-    requires = { 
+    requires = {
       'kyazdani42/nvim-web-devicons',
       opt = true
     },
   },
+
+  -- Theme
   { "navarasu/onedark.nvim" },
   { 'EdenEast/nightfox.nvim' },
+
+  -- Bad Apple 
+  {'vim-denops/denops.vim'},
+  {'ryoppippi/bad-apple.vim'},
+  {'ap/vim-css-color'},
 }
 
 return M
@@ -122,76 +133,76 @@ return M
 
 
 --[[
-  { "jose-elias-alvarez/null-ls.nvim", },
-  { "antoinemadec/FixCursorHold.nvim" }, -- Needed while issue https://github.com/neovim/neovim/issues/12587 is still open
-  { "rcarriga/nvim-notify",
-    config = function()
-      require("lvim.core.notify").setup()
-    end,
-    requires = { "nvim-telescope/telescope.nvim" },
-    disable = not lvim.builtin.notify.active or not lvim.builtin.telescope.active,
-  },
-  { "Tastyep/structlog.nvim" },
-  { "nvim-lua/popup.nvim" },
-  -- Telescope
-  {
-    "L3MON4D3/LuaSnip",
-    config = function()
-      local utils = require "lvim.utils"
-      local paths = {
-        utils.join_paths(get_runtime_dir(), "site", "pack", "packer", "start", "friendly-snippets"),
-      }
-      local user_snippets = utils.join_paths(get_config_dir(), "snippets")
-      if utils.is_directory(user_snippets) then
-        paths[#paths + 1] = user_snippets
-      end
-      require("luasnip.loaders.from_lua").lazy_load()
-      require("luasnip.loaders.from_vscode").lazy_load {
-        paths = paths,
-      }
-      require("luasnip.loaders.from_snipmate").lazy_load()
-    end,
-  },
-  { "max397574/lua-dev.nvim", module = "lua-dev", },
-  -- Autopairs
-  {
-    "windwp/nvim-autopairs",
-    -- event = "InsertEnter",
-    config = function()
-      require("lvim.core.autopairs").setup()
-    end,
-    disable = not lvim.builtin.autopairs.active,
-  },
-  { "JoosepAlviste/nvim-ts-context-commentstring", event = "BufReadPost", },
-  -- project.nvim
-  {
-    "ahmedkhalf/project.nvim",
-    config = function()
-      require("lvim.core.project").setup()
-    end,
-    disable = not lvim.builtin.project.active,
-  },
-  -- Debugging
-  {
-    "mfussenegger/nvim-dap",
-    -- event = "BufWinEnter",
-    config = function()
-      require("lvim.core.dap").setup()
-    end,
-    disable = not lvim.builtin.dap.active,
-  },
-  -- Debugger management
-  { "Pocco81/dap-buddy.nvim", branch = "dev", disable = not lvim.builtin.dap.active, },
-  -- alpha
-  {
-    "goolord/alpha-nvim",
-    config = function()
-      require("lvim.core.alpha").setup()
-    end,
-    disable = not lvim.builtin.alpha.active,
-  },
-  -- SchemaStore
-  { "b0o/schemastore.nvim", },
+{ "jose-elias-alvarez/null-ls.nvim", },
+{ "antoinemadec/FixCursorHold.nvim" }, -- Needed while issue https://github.com/neovim/neovim/issues/12587 is still open
+{ "rcarriga/nvim-notify",
+config = function()
+require("lvim.core.notify").setup()
+end,
+requires = { "nvim-telescope/telescope.nvim" },
+disable = not lvim.builtin.notify.active or not lvim.builtin.telescope.active,
+},
+{ "Tastyep/structlog.nvim" },
+{ "nvim-lua/popup.nvim" },
+-- Telescope
+{
+"L3MON4D3/LuaSnip",
+config = function()
+local utils = require "lvim.utils"
+local paths = {
+utils.join_paths(get_runtime_dir(), "site", "pack", "packer", "start", "friendly-snippets"),
+}
+local user_snippets = utils.join_paths(get_config_dir(), "snippets")
+if utils.is_directory(user_snippets) then
+paths[#paths + 1] = user_snippets
+end
+require("luasnip.loaders.from_lua").lazy_load()
+require("luasnip.loaders.from_vscode").lazy_load {
+paths = paths,
+}
+require("luasnip.loaders.from_snipmate").lazy_load()
+end,
+},
+{ "max397574/lua-dev.nvim", module = "lua-dev", },
+-- Autopairs
+{
+"windwp/nvim-autopairs",
+-- event = "InsertEnter",
+config = function()
+require("lvim.core.autopairs").setup()
+end,
+disable = not lvim.builtin.autopairs.active,
+},
+{ "JoosepAlviste/nvim-ts-context-commentstring", event = "BufReadPost", },
+-- project.nvim
+{
+"ahmedkhalf/project.nvim",
+config = function()
+require("lvim.core.project").setup()
+end,
+disable = not lvim.builtin.project.active,
+},
+-- Debugging
+{
+"mfussenegger/nvim-dap",
+-- event = "BufWinEnter",
+config = function()
+require("lvim.core.dap").setup()
+end,
+disable = not lvim.builtin.dap.active,
+},
+-- Debugger management
+{ "Pocco81/dap-buddy.nvim", branch = "dev", disable = not lvim.builtin.dap.active, },
+-- alpha
+{
+"goolord/alpha-nvim",
+config = function()
+require("lvim.core.alpha").setup()
+end,
+disable = not lvim.builtin.alpha.active,
+},
+-- SchemaStore
+{ "b0o/schemastore.nvim", },
 }
 --]]
 

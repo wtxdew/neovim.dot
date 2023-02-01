@@ -3,7 +3,10 @@ local M = {}
 local options = {
   close_command = "bdelete! %d", -- can be a string | function, see "Mouse actions"
   right_mouse_command = "vert sbuffer %d", -- can be a string | function, see "Mouse actions"
-  indicator_icon = "▎",
+  indicator = {
+    icon = "▎",
+    style= "icon",
+  },
   name_formatter = function(buf) -- buf contains a "name", "path" and "bufnr"
     -- remove extension from markdown files for example
     if buf.name:match "%.md" then

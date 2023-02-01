@@ -32,11 +32,6 @@ local definitions = {
       "*",
       [[++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif]],
     },
-    -- {
-    --   "BufNewFile,BufRead",
-    --   "*.mac",
-    --   "set filetype=sh",
-    -- },
   },
   wins                   = {
     -- Highlight current line only on focused window
@@ -51,11 +46,11 @@ local definitions = {
       [[if &cursorline && &filetype !~# '^\(dashboard\|clap_\)' && ! &pvw | setlocal nocursorline | endif]],
     },
     -- Force write shada on leaving nvim
-    {
-      "VimLeave",
-      "*",
-      [[if has('nvim') | wshada! | else | wviminfo! | endif]],
-    },
+--    {
+--      "VimLeave",
+--      "*",
+--      [[if has('nvim') | wshada! | else | wviminfo! | endif]],
+--    },
     -- Check if file changed when its window is focus, more eager than 'autoread'
     { "FocusGained", "* checktime" },
     -- Equalize window dimensions when resizing vim window
@@ -66,6 +61,7 @@ local definitions = {
     { "FileType", "make", "set noexpandtab shiftwidth=8 softtabstop=0" },
     -- Google tab style
     { "FileType", "c,cpp", "set expandtab tabstop=2 shiftwidth=2" },
+    { "FileType", "json", "setl expandtab shiftwidth=4 tabstop=4" },
     { "FileType", "dap-repl", "lua require('dap.ext.autocompl').attach()" },
     {
       "FileType",
@@ -102,7 +98,6 @@ function autocmd.nvim_create_augroups(definitions)
     end
     vim.api.nvim_command("augroup END")
   end
-  vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, { pattern = "*.mac", command = "set filetype=sh" })
 end
 
 function autocmd.loadcmds()
@@ -112,3 +107,5 @@ end
 autocmd.setup = function()
   autocmd.loadcmds()
 end
+
+return autocmd
