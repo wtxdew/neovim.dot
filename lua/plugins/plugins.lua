@@ -131,9 +131,6 @@ local M = {
   { "navarasu/onedark.nvim" },
   { 'EdenEast/nightfox.nvim' },
 
-  -- Bad Apple 
-  {'vim-denops/denops.vim'},
-  {'ryoppippi/bad-apple.vim'},
   {'ap/vim-css-color'},
 }
 
