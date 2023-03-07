@@ -14,7 +14,7 @@ M.config = function ()
       "packer",
       "vimwiki",
       "markdown",
-      "json",
+      -- "json",
       "txt",
       "vista",
       "help",
