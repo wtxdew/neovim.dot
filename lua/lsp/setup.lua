@@ -22,6 +22,7 @@ local lsp_installer = require "nvim-lsp-installer"
 lsp_installer.setup {}
 local lspconfig = require("lspconfig")
 
+
 -- lspconfig.sumneko_lua.setup ( require "lsp.lua".setup )
 -- lspconfig.clangd.setup {}
 
@@ -36,6 +37,7 @@ end
 --   buffer = vim.fn.bufnr(),
 --   callback = vim.lsp.buf.document_highlight,
 -- })
+
 -- vim.api.nvim_create_autocmd("CursorMoved", {
 --   group = "lsp_document_highlight",
 --   buffer = vim.fn.bufnr(),

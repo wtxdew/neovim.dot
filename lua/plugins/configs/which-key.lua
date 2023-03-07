@@ -63,6 +63,7 @@ M.mappings = {
   ["/"] = { "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>", "Comment" },
   ["c"] = { "<cmd>lua require('core.commands').buf_kill() <CR>", "Close Buffer" },
   ["e"] = { "<cmd>NvimTreeToggle<CR>", "Explorer" },
+  ["f"] = { "<cmd>Neoformat<CR>", "Neoformat"},
   ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
   b = {
     name = "Buffers",

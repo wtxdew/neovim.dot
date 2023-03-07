@@ -19,32 +19,33 @@ local default_options = {
   background = "dark",
   writebackup = false,
   clipboard = "unnamedplus",
-  cmdheight = 2, colorcolumn = "80",
+  cmdheight = 2, 
+  colorcolumn = "80",
   fileencoding = "utf-8",
   hlsearch = true,
   ignorecase = true,
   mouse = "a",
   showcmd = true,
-  showtabline = 2,
+  showtabline = 4,
   smartcase = true,
   smartindent = true,
   splitbelow = true, -- force all horizontal splits to go below current window
   splitright = true, -- force all vertical splits to go to the right of current window
   swapfile = false, -- creates a swapfile
   termguicolors = true,
-  timeoutlen = 250, 
+  timeoutlen = 250,
   title = true,
-  undodir = get_cache_dir() .. "/undo", 
+  undodir = get_cache_dir() .. "/undo",
   undofile = true,
   updatetime = 300, -- faster completion
   expandtab = true,
-  shiftwidth = 2,
-  tabstop = 2,
+  shiftwidth = 4,
+  tabstop = 4,
   number = true,
   relativenumber = false,
-  numberwidth = 2,
+  numberwidth = 4,
   signcolumn = "yes",
-  scrolloff = 8, 
+  scrolloff = 8,
 }
 
 function M.load_default_options ()
