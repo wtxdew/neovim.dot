@@ -47,7 +47,7 @@ M.vopts = {
 }
 
 M.vmappings = {
-  ["/"] = { "<ESC><CMD>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>", "Comment" },
+  ["/"] = { "<ESC><CMD>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>", "Comment" },
 }
 
 M.opts = {
@@ -60,9 +60,10 @@ M.opts = {
 }
 
 M.mappings = {
-  ["/"] = { "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", "Comment" },
+  ["/"] = { "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>", "Comment" },
   ["c"] = { "<cmd>lua require('core.commands').buf_kill() <CR>", "Close Buffer" },
   ["e"] = { "<cmd>NvimTreeToggle<CR>", "Explorer" },
+  ["f"] = { "<cmd>Neoformat<CR>", "Neoformat"},
   ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
   b = {
     name = "Buffers",

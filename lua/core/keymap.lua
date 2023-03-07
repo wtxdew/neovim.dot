@@ -1,29 +1,31 @@
 local M = {}
 
-local generic_opts_any = { noremap = true, silent = true }
+local isColemak = 0
 
-local generic_opts = {
-  insert_mode = generic_opts_any,
-  normal_mode = generic_opts_any,
-  visual_mode = generic_opts_any,
-  visual_block_mode = generic_opts_any,
-  command_mode = generic_opts_any,
-  term_mode = { silent = true },
-}
-local mode_adapters = {
-  insert_mode = "i",
-  normal_mode = "n",
-  term_mode = "t",
-  visual_mode = "v",
-  visual_block_mode = "x",
-  command_mode = "c",
-}
+-- local gejeric_opts_any = { noremap = true, silent = true }
+-- local generic_opts = {
+--   insert_mode = generic_opts_any,
+--   normal_mode = generic_opts_any,
+--   visual_mode = generic_opts_any,
+--   visual_block_mode = generic_opts_any,
+--   command_mode = generic_opts_any,
+--   term_mode = { silent = true },
+-- }
+-- local mode_adapters = {
+--   insert_mode = "i",
+--   normal_mode = "n",
+--   term_mode = "t",
+--   visual_mode = "v",
+--   visual_block_mode = "x",
+--   command_mode = "c",
+-- }
 
 ---@usage change or add keymappings for insert mode
 local insert_mode = {
   -- 'jk' & 'kj' for quitting insert mode
   ["jk"] = "<ESC>",
   ["kj"] = "<ESC>",
+  ["<C-b>"] = "<Left>",
 }
 
 local normal_mode = {
@@ -93,9 +95,17 @@ function M.load_defaults()
   M.set_keymap(visual_mode, "v")
   M.set_keymap(visual_block_mode, "x")
   M.set_keymap(command_mode, "c")
+  if isColemak then
+    -- M.set_colemak()
+  end
 end
 
--- autocmd TermEnter term://*toggleterm#* tnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
+function M.set_colemak()
+    -- hnei
+    vim.api.nvim_set_keymap('n', 'n', 'j', {noremap = true, silent = true})
+    vim.api.nvim_set_keymap('n', 'e', 'k', {noremap = true, silent = true})
+    vim.api.nvim_set_keymap('n', 'i', 'l', {noremap = true, silent = true})
+end
 
 function M.set_keymap(keymaps, mode_short)
   for key, val in pairs(keymaps) do

@@ -24,11 +24,11 @@ lspconfig.sumneko_lua.setup ( require "lsp.lua".setup )
 lspconfig.clangd.setup { }
 
 vim.api.nvim_create_augroup("lsp_document_highlight", {})
-vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-  group = "lsp_document_highlight",
-  buffer = vim.fn.bufnr(),
-  callback = vim.lsp.buf.document_highlight,
-})
+-- vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+--   group = "lsp_document_highlight",
+--   buffer = vim.fn.bufnr(),
+--   callback = vim.lsp.buf.document_highlight,
+-- })
 vim.api.nvim_create_autocmd("CursorMoved", {
   group = "lsp_document_highlight",
   buffer = vim.fn.bufnr(),

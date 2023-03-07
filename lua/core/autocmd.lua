@@ -112,3 +112,5 @@ end
 autocmd.setup = function()
   autocmd.loadcmds()
 end
+
+return autocmd

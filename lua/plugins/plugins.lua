@@ -11,6 +11,7 @@ local M = {
   },
   { 'rafamadriz/friendly-snippets' },
   { 'L3MON4D3/LuaSnip' },
+  {'sbdchd/neoformat'},
 
   -- Completion
   {
@@ -28,12 +29,19 @@ local M = {
   { "hrsh7th/cmp-buffer", },
   { 'saadparwaiz1/cmp_luasnip' },
   { 'github/copilot.vim' },
+  { 'mhartington/formatter.nvim',
+    config = function()
+      require('plugins.configs.formatter')
+    end
+  },
+  { 'rhysd/vim-clang-format' },
 
   -- LSP
   { 'neovim/nvim-lspconfig' },
   { "hrsh7th/cmp-nvim-lsp" },
   { "tamago324/nlsp-settings.nvim" },
-  { "williamboman/nvim-lsp-installer", },
+  { "williamboman/nvim-lsp-installer" },
+  -- { "lukas-reineke/lsp-format.nvim"},
 
   -- Tools
   {
@@ -62,11 +70,12 @@ local M = {
     run = "make",
   },
   {
-    "akinsho/toggleterm.nvim",  
+    "akinsho/toggleterm.nvim",
     config = function()
       require("plugins.configs.toggleterm").setup()
     end,
   },
+  { "nvim-telescope/telescope-file-browser.nvim" },
 
   -- Appearance
   {
@@ -108,7 +117,7 @@ local M = {
     config = function()
       require('plugins.configs.lualine').Setup()
     end,
-    requires = { 
+    requires = {
       'kyazdani42/nvim-web-devicons',
       opt = true
     },
