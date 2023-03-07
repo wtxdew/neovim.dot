@@ -1,35 +1,23 @@
-local lsp_installer = require "nvim-lsp-installer"
---
--- -- 安装列表
--- -- https://github.com/williamboman/nvim-lsp-installer#available-lsps
--- -- { key: language, value: config_file}
--- local servers = {
---   sumneko_lua = require "lsp.lua", -- /lua/lsp/lua.lua
--- }
---
--- -- 自动安装 LanguageServers
--- for name, _ in pairs(servers) do
---   local server_is_found, server = lsp_installer.get_server(name)
---   if server_is_found then
---     if not server:is_installed() then
---       print("Installing " .. name)
---       server:install()
---     end
---   end
--- end
---
+local mason = require("mason")
+local mason_lspconfig = require("mason-lspconfig")
 
-lsp_installer.setup {}
-local lspconfig = require("lspconfig")
+mason.setup()
+mason_lspconfig.setup()
 
-
--- lspconfig.sumneko_lua.setup ( require "lsp.lua".setup )
--- lspconfig.clangd.setup {}
-
-for _, server in ipairs(lsp_installer.get_installed_servers()) do
-  -- vim.pretty_print(server.name)
-  lspconfig[server.name].setup{ }
-end
+mason_lspconfig.setup_handlers {
+    -- The first entry (without a key) will be the default handler
+    -- and will be called for each installed server that doesn't have
+    -- a dedicated handler.
+    function (server_name) -- default handler (optional)
+        vim.pretty_print(server_name)
+        require("lspconfig")[server_name].setup {}
+    end,
+    -- Next, you can provide a dedicated handler for specific servers.
+    -- For example, a handler override for the `rust_analyzer`:
+    ["lua_ls"] = function ()
+        require("lsp.lua_ls").setup()
+    end
+}
 
 -- vim.api.nvim_create_augroup("lsp_document_highlight", {})
 -- vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
