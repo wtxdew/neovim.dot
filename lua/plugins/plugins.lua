@@ -11,7 +11,7 @@ local M = {
     },
     { 'rafamadriz/friendly-snippets' },
     { 'L3MON4D3/LuaSnip' },
-    {'sbdchd/neoformat'},
+    -- {'sbdchd/neoformat'},
 
     -- Completion
     {
@@ -35,7 +35,6 @@ local M = {
             require('plugins.configs.formatter')
         end,
     },
-    { 'rhysd/vim-clang-format' },
 
     -- LSP
     { 'neovim/nvim-lspconfig' },

@@ -39,7 +39,13 @@ require("formatter").setup {
       end
     },
     cpp = {
-      require("formatter.filetypes.cpp").clang_format,
+      function()
+        return {
+            exe = "clang-format",
+            -- args = {'-assume-filename=', vim.fn.shellescape(vim.api.nvim_buf_get_name(0)), '-style="{BasedOnStyle: llvm, IndentWidth: 4}"'},
+            stdin = true,
+        }
+      end
     },
 
     -- Use the special "*" filetype for defining formatter configurations on
