@@ -119,6 +119,13 @@ local M = {
         event = "BufRead",
         -- disable = not lvim.builtin.gitsigns.active,
     },
+    { 
+        "shortcuts/no-neck-pain.nvim", 
+        config = function()
+            require('plugins.configs.noneckpain').setup()
+        end,
+        tag = "*",
+    },
 
     -- Top line
     {

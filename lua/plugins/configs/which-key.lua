@@ -65,6 +65,7 @@ M.mappings = {
     ["e"] = { "<cmd>NvimTreeToggle<CR>", "Explorer" },
     ["f"] = { "<cmd>Format<CR>", "Formatter"},
     ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
+    ["t"] = { "<cmd>NoNeckPain<CR>", "NoNeckPain" },
     b = {
         name = "Buffers",
         j = { "<cmd>BufferLinePick<cr>", "Jump" },
