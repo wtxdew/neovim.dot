@@ -90,6 +90,7 @@ local M = {
         end,
     },
     { "nvim-telescope/telescope-file-browser.nvim" },
+    { "junegunn/vim-easy-align" },
 
     -- Appearance
     {
