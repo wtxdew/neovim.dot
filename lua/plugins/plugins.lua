@@ -9,6 +9,12 @@ local M = {
             require("plugins.configs.treesitter").setup()
         end,
     },
+    { 
+        'nvim-treesitter/nvim-treesitter-context',
+        config = function()
+            require("plugins.configs.ts-context").setup()
+        end,
+    },
     { 'rafamadriz/friendly-snippets' },
     { 'L3MON4D3/LuaSnip' },
     -- {'sbdchd/neoformat'},
