@@ -1,5 +1,5 @@
 # Prerequisites
-- Neovim v0.8.3+
+- Neovim v0.9.4+
 
 # install 
 ```
