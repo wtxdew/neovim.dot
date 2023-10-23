@@ -4,5 +4,5 @@
 # install 
 ```
 git clone https://github.com/wtxdew/neovim.dot.git ~/.config/nvim/
-nvim --headless "+Lazy! sync" +qa
+nvim --headless "+Lazy! restore" +qa
 ```
