@@ -12,10 +12,10 @@ local config = {
   numhl                        = true, -- Toggle with `:Gitsigns toggle_numhl`
   linehl                       = false, -- Toggle with `:Gitsigns toggle_linehl`
   word_diff                    = false, -- Toggle with `:Gitsigns toggle_word_diff`
-  keymaps = {
-    noremap = true,
-    buffer = true,
-  },
+  -- keymaps = {
+  --   noremap = true,
+  --   buffer = true,
+  -- },
   watch_gitdir                 = {
     interval = 1000,
     follow_files = true

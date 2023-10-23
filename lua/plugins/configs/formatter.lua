@@ -55,6 +55,17 @@ require("formatter").setup({
 				}
 			end,
 		},
+        json = {
+            function()
+                return {
+                    exe = "jq",
+                    args = {
+                        ".",
+                    },
+                    stdin = true,
+                }
+            end,
+        },
 
 		-- Use the special "*" filetype for defining formatter configurations on
 		-- any filetype

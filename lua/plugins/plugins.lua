@@ -8,8 +8,10 @@ local M = {
         config = function()
             require("plugins.configs.treesitter").setup()
         end,
+        -- commit = "0179a89656b4ce395a4487c07ae385b8425524ae",
+        tag="v0.9.1",
     },
-    { 
+    {
         'nvim-treesitter/nvim-treesitter-context',
         config = function()
             require("plugins.configs.ts-context").setup()
@@ -34,7 +36,10 @@ local M = {
     { 'hrsh7th/cmp-path' },
     { "hrsh7th/cmp-buffer", },
     { 'saadparwaiz1/cmp_luasnip' },
-    { 'github/copilot.vim' },
+    {
+        'github/copilot.vim',
+        tag = 'v1.10.2',
+    },
     {
         'mhartington/formatter.nvim',
         config = function()
@@ -107,6 +112,9 @@ local M = {
         end
     },
     {
+        'HiPhish/rainbow-delimiters.nvim',
+    },
+    {
         'kyazdani42/nvim-tree.lua',
         config = function()
             require('plugins.configs.nvimtree').setup()
@@ -125,8 +133,8 @@ local M = {
         event = "BufRead",
         -- disable = not lvim.builtin.gitsigns.active,
     },
-    { 
-        "shortcuts/no-neck-pain.nvim", 
+    {
+        "shortcuts/no-neck-pain.nvim",
         config = function()
             require('plugins.configs.noneckpain').setup()
         end,
@@ -143,7 +151,7 @@ local M = {
         event = "BufWinEnter",
     },
 
-    -- bottom line 
+    -- bottom line
     {
         'nvim-lualine/lualine.nvim',
         config = function()
@@ -158,6 +166,7 @@ local M = {
     -- Theme
     { "navarasu/onedark.nvim" },
     { 'EdenEast/nightfox.nvim' },
+    { 'folke/tokyonight.nvim' },
 
     {'ap/vim-css-color'},
 }
