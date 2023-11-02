@@ -1,14 +1,9 @@
 local M = {
-    -- Packer
-    { 'wbthomason/packer.nvim' },
-
-    -- Syntax
     {
         'nvim-treesitter/nvim-treesitter',
         config = function()
             require("plugins.configs.treesitter").setup()
         end,
-        -- commit = "0179a89656b4ce395a4487c07ae385b8425524ae",
         tag="v0.9.1",
     },
     {
@@ -85,9 +80,9 @@ local M = {
     },
     {
         "nvim-telescope/telescope.nvim",
-        config = function()
-            require("plugins.configs.telescope").setup()
-        end,
+        -- config = function()
+            -- require("plugins.configs.telescope").setup()
+        -- end,
         requires = { { 'nvim-lua/plenary.nvim' } },
     },
     {
@@ -138,7 +133,6 @@ local M = {
         config = function()
             require('plugins.configs.noneckpain').setup()
         end,
-        tag = "*",
     },
 
     -- Top line
