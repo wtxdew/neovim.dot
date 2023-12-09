@@ -25,7 +25,7 @@ M.setup = function()
 
     require("nvim-treesitter.configs").setup(config)
 
-    require("nvim-treesitter.install").compilers = {"clang"}
+    require 'nvim-treesitter.install'.compilers = { "clang", "gcc" }
     require("nvim-treesitter.install").prefer_git = true
     local parsers = require("nvim-treesitter.parsers").get_parser_configs()
     for _, p in pairs(parsers) do

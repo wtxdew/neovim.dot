@@ -79,6 +79,9 @@ local M = {
         end
     },
     {
+        'nvim-lua/plenary.nvim',
+    },
+    {
         "nvim-telescope/telescope.nvim",
         -- config = function()
             -- require("plugins.configs.telescope").setup()
