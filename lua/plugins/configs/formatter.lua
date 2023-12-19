@@ -47,14 +47,14 @@ require("formatter").setup({
 				}
 			end,
 		},
-        python = {
-			function()
-				return {
-					exe = "yapf",
-					stdin = true,
-				}
-			end,
-		},
+  --       python = {
+		-- 	function()
+		-- 		return {
+		-- 			exe = "autopep8",
+		-- 			stdin = true,
+		-- 		}
+		-- 	end,
+		-- },
         json = {
             function()
                 return {

@@ -66,12 +66,6 @@ local configs = {
 					symlink = "",
 					symlink_open = "",
 				},
-				-- lsp = {
-				--   hint = "",
-				--   info = "",
-				--   warning = "",
-				--   error = "",
-				-- }
 			},
 		},
 		highlight_git = true,
