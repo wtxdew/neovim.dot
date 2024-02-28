@@ -166,6 +166,7 @@ local M = {
     { 'folke/tokyonight.nvim' },
 
     {'ap/vim-css-color'},
+    {'dstein64/vim-startuptime'},
 }
 
 return M

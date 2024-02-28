@@ -66,6 +66,17 @@ require("formatter").setup({
                 }
             end,
         },
+        yaml = {
+            function()
+                return {
+                    exe = "prettier",
+                    args = {
+                        ".",
+                    },
+                    stdin = true,
+                }
+            end,
+        },
 
 		-- Use the special "*" filetype for defining formatter configurations on
 		-- any filetype
