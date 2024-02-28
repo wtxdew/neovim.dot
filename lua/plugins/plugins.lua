@@ -33,7 +33,7 @@ local M = {
     { 'saadparwaiz1/cmp_luasnip' },
     {
         'github/copilot.vim',
-        tag = 'v1.10.2',
+        -- tag = 'v1.11.0',
     },
     {
         'mhartington/formatter.nvim',
