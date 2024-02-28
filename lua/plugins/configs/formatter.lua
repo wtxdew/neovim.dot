@@ -2,8 +2,7 @@
 local util = require("formatter.util")
 
 -- Provides the Format, FormatWrite, FormatLock, and FormatWriteLock commands
-require("formatter").setup({
-	-- Enable or disable logging
+require("formatter").setup({ -- Enable or disable logging
 	logging = true,
 	-- Set the log level
 	log_level = vim.log.levels.WARN,
@@ -47,34 +46,36 @@ require("formatter").setup({
 				}
 			end,
 		},
-        python = {
+		json = {
 			function()
 				return {
-					exe = "yapf",
+					exe = "jq",
+					args = {
+						".",
+					},
 					stdin = true,
 				}
 			end,
 		},
-        json = {
-            function()
-                return {
-                    exe = "jq",
-                    args = {
-                        ".",
-                    },
-                    stdin = true,
-                }
-            end,
-        },
-        javascript = {
-            function()
-                return {
-                    exe = "/opt/homebrew/bin/clang-format",
-					args = {'-assume-filename=', vim.fn.shellescape(vim.api.nvim_buf_get_name(0))},
-                    stdin = true,
-                }
-            end,
-        },
+		javascript = {
+			function()
+				return {
+					exe = "/opt/homebrew/bin/clang-format",
+					args = { "-assume-filename=", vim.fn.shellescape(vim.api.nvim_buf_get_name(0)) },
+				}
+			end,
+		},
+		yaml = {
+			function()
+				return {
+					exe = "prettier",
+					args = {
+						".",
+					},
+					stdin = true,
+				}
+			end,
+		},
 
 		-- Use the special "*" filetype for defining formatter configurations on
 		-- any filetype

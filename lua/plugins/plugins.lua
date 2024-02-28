@@ -112,15 +112,15 @@ local M = {
     {
         'HiPhish/rainbow-delimiters.nvim',
     },
+    {'nvim-tree/nvim-web-devicons'},
     {
-        'kyazdani42/nvim-tree.lua',
+        'nvim-tree/nvim-tree.lua',
         config = function()
             require('plugins.configs.nvimtree').setup()
         end,
         requires = {
-            'kyazdani42/nvim-web-devicons', -- optional, for file icon
+            'nvim-tree/nvim-web-devicons', -- optional, for file icon
         },
-        tag = 'nightly' -- optional, updated every week. (see issue #1193)
     },
     {
         "lewis6991/gitsigns.nvim",
@@ -166,6 +166,7 @@ local M = {
     { 'folke/tokyonight.nvim' },
 
     {'ap/vim-css-color'},
+    {'dstein64/vim-startuptime'},
 }
 
 return M
