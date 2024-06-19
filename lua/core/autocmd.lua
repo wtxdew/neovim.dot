@@ -32,6 +32,7 @@ local definitions = {
             "*",
             [[++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif]],
         },
+        { "BufNewFile,BufRead", "README", "set filetype=markdown" },
     },
     wins                   = {
         -- Highlight current line only on focused window
@@ -73,11 +74,11 @@ local definitions = {
             "*",
             [[setlocal formatoptions-=c formatoptions-=r formatoptions-=o]],
         },
-        {
-            "FileType",
-            "c,cpp",
-            "nnoremap <leader>h :ClangdSwitchSourceHeaderVSplit<CR>",
-        },
+        -- {
+        --     "FileType",
+        --     "c,cpp",
+        --     "nnoremap <leader>h :ClangdSwitchSourceHeaderVSplit<CR>",
+        -- },
     },
     yank                   = {
         {
@@ -88,8 +89,8 @@ local definitions = {
     },
 }
 
-function autocmd.nvim_create_augroups(definitions)
-    for group_name, definition in pairs(definitions) do
+function autocmd.nvim_create_augroups(definitions_set)
+    for group_name, definition in pairs(definitions_set) do
         vim.api.nvim_command("augroup " .. group_name)
         vim.api.nvim_command("autocmd!")
         for _, def in ipairs(definition) do
