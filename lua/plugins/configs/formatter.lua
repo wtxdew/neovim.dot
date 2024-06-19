@@ -37,6 +37,14 @@ require("formatter").setup({ -- Enable or disable logging
 				}
 			end,
 		},
+		c = {
+			function()
+				return {
+					exe = "clang-format",
+					stdin = true,
+				}
+			end,
+		},
 		cpp = {
 			function()
 				return {
@@ -76,6 +84,14 @@ require("formatter").setup({ -- Enable or disable logging
 				}
 			end,
 		},
+        python = {
+            function()
+                return {
+                    exe = "yapf",
+                    stdin = true,
+                }
+            end,
+        },
 
 		-- Use the special "*" filetype for defining formatter configurations on
 		-- any filetype
