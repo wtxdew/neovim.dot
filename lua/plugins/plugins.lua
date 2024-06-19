@@ -112,7 +112,12 @@ local M = {
     {
         'HiPhish/rainbow-delimiters.nvim',
     },
-    {'nvim-tree/nvim-web-devicons'},
+    {
+        "nvim-tree/nvim-web-devicons",
+        config=function()
+            require("plugins.configs.nvim-web-devicons").setup()
+        end,
+    },
     {
         'nvim-tree/nvim-tree.lua',
         config = function()
